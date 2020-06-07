@@ -11,3 +11,11 @@ def home(request):
     }
 
     return render(request, 'main/index.html', context)
+
+def detail(request, id):
+    project = Project.objects.get(id=id) # Selects everything from the Project table where id=id
+
+    context = {
+        "project" : project,
+    }
+    return render(request, 'main/details.html', context)
