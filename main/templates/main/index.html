@@ -1,6 +1,12 @@
-<h1>All Projects in the database</h1>
+{% extends 'main/base.html' %}
 
-{% for project in projects %}
+{% block content %}
 
-    <li>{{ project.name }}</li>
-{% endfor %}
+    <h1>All Projects in the database</h1>
+
+    {% for project in projects %}
+
+        <li>{{ project.name }}</li>
+    {% endfor %}
+
+{% endblock %}
