@@ -8,14 +8,16 @@
             <div class="card-body">
                 <div class="row">
                     {% for project in projects %}
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="text-center">{{ project.name }}</h3>
-                                <div class="text-center">
-                                    <i>{{ project.languages }}</i>
+                                <div class="text-center">                                
+                                    <img src="{{ project.image.url }}" alt="{{ project.name }} image" class="img-fluid" width="75%">
+                                    <h3 class="text-center">{{ project.name }}</h3>
+                                    <i>{{ project.reviewDate }}</i>
+                                    </br>
+                                    <a href="details/{{ project.id }}">Read More</a>
                                 </div>
-                                <a href="details/{{ project.id }}">Read More</a>
                             </div>
                         </div>
                         </br>
