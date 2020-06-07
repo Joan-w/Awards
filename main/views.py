@@ -9,7 +9,6 @@ def home(request):
     context = {
         'projects' : allProjects,
     }
-
     return render(request, 'main/index.html', context)
 
 def detail(request, id):
