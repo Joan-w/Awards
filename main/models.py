@@ -4,6 +4,7 @@ from django.db import models
 class Project(models.Model):
     # fields for the project table
     name = models.CharField(max_length=300)
+    image = models.ImageField(upload_to='images/')
     languages = models.CharField(max_length=300)
     description = models.TextField(max_length=5000)
     projectLink = models.CharField(max_length=300)
