@@ -2,11 +2,28 @@
 
 {% block content %}
 
-    <h1>All Projects in the database</h1>
-
-    {% for project in projects %}
-
-        <li>{{ project.name }}</li>
-    {% endfor %}
+    <div class="container">
+        </br>
+        <div class="card" id="backdrop">
+            <div class="card-body">
+                <div class="row">
+                    {% for project in projects %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="text-center">{{ project.name }}</h3>
+                                <div class="text-center">
+                                    <i>{{ project.languages }}</i>
+                                </div>
+                                <a href="details/{{ project.id }}">Read More</a>
+                            </div>
+                        </div>
+                        </br>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
