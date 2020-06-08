@@ -33,7 +33,7 @@ def add_projects(request):
             return redirect('main:home')
     else:
         form = ProjectForm()
-    return render(request, 'main/addprojects.html', {"form":form, "controller":"Add Projects"})
+    return render(request, 'main/addprojects.html', {"form":form, "controller":"Add Project"})
 
 # edit the project
 def edit_projects(request, id):
