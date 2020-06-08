@@ -63,7 +63,7 @@ def delete_projects(request, id):
     project.delete()
     return redirect("main:home")
 
-
+# the reviews view
 def add_review(request, id):
     if request.user.is_authenticated:
         project = Project.objects.get(id=id)
@@ -79,5 +79,28 @@ def add_review(request, id):
         else:
             form = ReviewForm()
         return render(request, 'main/details.html', {"form":form})
+    else:
+        return redirect('accounts:login')
+
+# edit reviews
+def edit_review(request, project_id, review_id):
+    if request.user.is_authenticated:
+        project = Project.objects.get(id=project_id)
+        review = Review.objects.get(project=project, id=review_id)
+
+        # check if the review was done by a logged in user
+        if request.user == review.user:
+            # grant permissioon
+            if request.method == 'POST':
+                form = ReviewForm(request.POST, instance=review)
+                if form.is_valid():
+                    data = form.save(commit=False)
+                    data.save()
+                    return redirect('main:detail', project_id)
+            else:
+                form = ReviewForm(instance=review)
+            return render(request, 'main/editreview.html', {"form":form})
+        else:
+            return redirect('main:detail', project_id)
     else:
         return redirect('accounts:login')
