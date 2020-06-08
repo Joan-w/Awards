@@ -10,4 +10,10 @@ class ProjectForm(forms.ModelForm):
             'image',
             'languages',
             'description',
-            'projectLink')
+            'projectLink'
+            )
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ('comment', 'rating')
