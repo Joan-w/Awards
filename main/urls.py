@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^deleteprojects/<int:id>/', main_views.delete_projects, name="delete_projects"),
     url(r'^addreview/<int:id>/', main_views.add_review, name="add_review"),
     url(r'^editreview/<int:project_id>/<int:review_id/', main_views.edit_review, name="edit_review"),
+    url(r'^deletereview/<int:project_id>/<int:review_id/', main_views.delete_review, name="delete_review"),
 ]
