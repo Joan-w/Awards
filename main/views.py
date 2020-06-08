@@ -15,7 +15,7 @@ def home(request):
 # detail page
 def detail(request, id):
     project = Project.objects.get(id=id) # Selects everything from the Project table where id=id
-    reviews = Review.object.filter(project=id)
+    reviews = Review.object.filter(project=id).order_by('-comment')
 
     context = {
         "project" : project,
