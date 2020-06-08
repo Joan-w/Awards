@@ -43,3 +43,9 @@ def login_user(request):
         else:
             return render(request, 'accounts/login.html', {'error': 'Invalid Username or Password. Try again!'})
     return render(request, 'accounts/login.html')
+
+# logout user view
+def logout_user(request):
+    logout(request)
+    print('logged out successfully')
+    return redirect("accounts:login")
