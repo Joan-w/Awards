@@ -15,6 +15,7 @@
                     <h5>Language: {{ project.languages | linebreak }}</h5>
                     <h5>Rating: {{ project.averageRating }}</h5>
                     <a href="edit_projects/{{ project.id }}" class=" btn btn-warning">{{ controller }}</a>
+                    <a href="delete_projects/{{ project.id }}" class=" btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>
