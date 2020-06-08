@@ -95,12 +95,29 @@ def edit_review(request, project_id, review_id):
                 form = ReviewForm(request.POST, instance=review)
                 if form.is_valid():
                     data = form.save(commit=False)
-                    data.save()
-                    return redirect('main:detail', project_id)
+                    if (data.rating > 10) or (data.rating < 0):
+                        error = 'Out of range. Please select rating from 0 to 10'
+                        return render(request, 'main/editreview.html', {"error":error})
+                    else:
+                        data.save()
+                        return redirect('main:detail', project_id)
             else:
                 form = ReviewForm(instance=review)
             return render(request, 'main/editreview.html', {"form":form})
         else:
             return redirect('main:detail', project_id)
+    else:
+        return redirect('accounts:login')
+
+# delete review
+def delete_review(request, project_id, review_id):
+    if request.user.is_authenticated:
+        project = Project.objects.get(id=project_id)
+        review = Review.objects.get(project=project, id=review_id)
+
+        # check if the review was done by a logged in user
+        if request.user == review.user:
+            # grant permission
+            review.delete()
     else:
         return redirect('accounts:login')
