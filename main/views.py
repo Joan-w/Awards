@@ -5,7 +5,12 @@ from .forms import *
 
 # Create your views here.
 def home(request):
-    allProjects = Project.objects.all() # selects everything from the Project table
+    query = request.GET.get('title')
+    allProjects = None
+    if query:
+        allProjects = Project.objects.filter(name__icontains=query)
+    else:
+        allProjects = Project.objects.all() # selects everything from the Project table
     
     context = {
         'projects' : allProjects,
