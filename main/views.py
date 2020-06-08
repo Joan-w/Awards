@@ -33,4 +33,21 @@ def add_projects(request):
             return redirect('main:home')
     else:
         form = ProjectForm()
-    return render(request, 'main/addprojects.html', {"form":form})
+    return render(request, 'main/addprojects.html', {"form":form, "controller":"Add Projects"})
+
+# edit the project
+def edit_projects(request, id):
+    # get the projects linked with id
+    project = Project.objects.get(id=id)
+
+    # form check
+    if request.method == 'POST':
+        form = ProjectForm(request.POST or None, instance=project)
+        # check if form is valid
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.save()
+            return redirect('main:detail', id)
+        else:
+            form = ProjectForm(instance=project)
+        return render(request, 'main/addprojects.html', {"form":form, "controller":"Edit Project"})
