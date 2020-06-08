@@ -51,3 +51,12 @@ def edit_projects(request, id):
         else:
             form = ProjectForm(instance=project)
         return render(request, 'main/addprojects.html', {"form":form, "controller":"Edit Project"})
+
+# delete project
+def delete_projects(request, id):
+    # get the project by id
+    project = Project.objects.get(id=id)
+
+    # delete the project
+    project.delete()
+    return redirect("main:home")
