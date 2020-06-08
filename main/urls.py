@@ -1,9 +1,10 @@
 from django.conf.urls import url
-from . import views
+from . import views as main_views
 
 app_name = 'main'
 
 urlpatterns = [
-    url(r'', views.home, name='home'),
-    url(r'^details/<int:id>/', views.detail, name="detail")
+    url(r'^$', main_views.home, name='home'),
+    url(r'^details/<int:id>/', main_views.detail, name="detail"),
+    url(r'^addprojects/', main_views.add_projects, name="add_projects"),
 ]
