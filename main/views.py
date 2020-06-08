@@ -15,9 +15,11 @@ def home(request):
 # detail page
 def detail(request, id):
     project = Project.objects.get(id=id) # Selects everything from the Project table where id=id
+    reviews = Review.object.filter(project=id)
 
     context = {
         "project" : project,
+        "reviews" : reviews,
     }
     return render(request, 'main/details.html', context)
 
@@ -60,3 +62,22 @@ def delete_projects(request, id):
     # delete the project
     project.delete()
     return redirect("main:home")
+
+
+def add_review(request, id):
+    if request.user.is_authenticated:
+        project = Project.objects.get(id=id)
+        if request.method == 'POST':
+            form = ReviewForm(request.POST or None)
+            if form.is_valid():
+                data = form.save(commit=False)
+                data.comment = request.POST['comment']
+                data.rating = request.POST['rating']
+                data.user = request.user
+                data.project = projectdata.save()
+                return redirect('main:detail', id)
+        else:
+            form = ReviewForm()
+        return render(request, 'main/details.html', {"form":form})
+    else:
+        return redirect('accounts:login')
