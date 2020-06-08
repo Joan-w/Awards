@@ -4,3 +4,6 @@ body{
 #backdrop{
     background-color: #eef3ef;
 }
+.container{
+    width: 75%;
+}
