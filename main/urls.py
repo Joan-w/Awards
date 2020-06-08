@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^$', main_views.home, name='home'),
     url(r'^details/<int:id>/', main_views.detail, name="detail"),
     url(r'^addprojects/', main_views.add_projects, name="add_projects"),
+    url(r'^editprojects/<int:id>/', main_views.edit_projects, name="edit_projects"),
 ]
