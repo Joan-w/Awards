@@ -20,7 +20,7 @@ def home(request):
 # detail page
 def detail(request, id):
     project = Project.objects.get(id=id) # Selects everything from the Project table where id=id
-    reviews = Review.object.filter(project=id).order_by('-comment')
+    reviews = Review.objects.filter(comment=id).order_by('-comment')
 
     context = {
         "project" : project,
@@ -55,9 +55,9 @@ def edit_projects(request, id):
             data = form.save(commit=False)
             data.save()
             return redirect('main:detail', id)
-        else:
-            form = ProjectForm(instance=project)
-        return render(request, 'main/addprojects.html', {"form":form, "controller":"Edit Project"})
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'main/addprojects.html', {"form":form, "controller":"Edit Project"})
 
 # delete project
 def delete_projects(request, id):
@@ -79,7 +79,8 @@ def add_review(request, id):
                 data.comment = request.POST['comment']
                 data.rating = request.POST['rating']
                 data.user = request.user
-                data.project = projectdata.save()
+                # data.project = project
+                data.save()
                 return redirect('main:detail', id)
         else:
             form = ReviewForm()
