@@ -1,1 +1,1 @@
-web: gunicorn projectreview.wsgi
+web: gunicorn --pythonpath projectreview.wsgi --log-file--
