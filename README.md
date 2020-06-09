@@ -1,6 +1,7 @@
 # PROJECT
 ### Awwards
-![Screenshot from 2020-06-03 02-26-21](https://user-images.githubusercontent.com/58691817/83579458-0051b200-a542-11ea-83f8-94f91249b3ae.png)
+![Screenshot from 2020-06-09 19-50-52](https://user-images.githubusercontent.com/58691817/84176781-9d54a380-aa8a-11ea-87a3-fb01e2308725.png)
+
 
 
 ## AUTHOR
