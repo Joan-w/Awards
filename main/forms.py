@@ -5,15 +5,15 @@ from .models import *
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = (
+        fields = [
             'name',
             'image',
             'languages',
             'description',
             'projectLink'
-            )
+            ]
 
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ('comment', 'rating')
+        fields = ['comment', 'rating']
