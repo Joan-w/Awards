@@ -5,7 +5,7 @@ django-ckedit==1.0
 django-crispy-forms==1.9.1
 easy-thumbnails==2.7
 gunicorn==20.0.4
-Pillow==7.1.2
+Pillow==8.1.1
 psycopg2==2.8.5
 pytz==2020.1
 static3==0.7.0
